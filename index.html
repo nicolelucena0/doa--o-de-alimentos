@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConectGv - Doação de Alimentos</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Biblioteca para gerar QRCode -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Tela 1: Entrada -->
+    <div id="tela1" class="tela">
+      <h1>🌱 ConectGv (Grão e Vida)</h1>
+      <p>Seja bem-vindo ao aplicativo de doações de alimentos.</p>
+      <div class="nav-buttons">
+        <button onclick="irPara('tela6')">ℹ Informações</button>
+        <button onclick="irPara('tela3')">➡ Entrar no App</button>
+      </div>
+    </div>
+
+    <!-- Tela 6: Informações e QR Code -->
+    <div id="tela6" class="tela hidden">
+      <h1>ℹ Sobre o Aplicativo</h1>
+      <p>Compartilhe alimentos e ajude quem precisa!</p>
+
+      <h3>📲 QR Code do Aplicativo</h3>
+      <div id="qrcode"></div>
+      <p>Escaneie o QR Code com seu celular para acessar o aplicativo.</p>
+
+      <div class="nav-buttons">
+        <button onclick="irPara('tela1')">⬅ Voltar</button>
+        <button onclick="irPara('tela2')">📝 Cadastrar Alimentos</button>
+      </div>
+    </div>
+
+    <!-- Tela 2: Cadastro de Alimentos -->
+    <div id="tela2" class="tela hidden">
+      <h1>📋 Cadastro de Doação</h1>
+      <input type="text" id="nome" placeholder="Nome do doador">
+      <input type="text" id="alimento" placeholder="Tipo de alimento">
+      <input type="text" id="quantidade" placeholder="Quantidade">
+      <input type="date" id="data">
+      <input type="text" id="localRetirada" placeholder="📍 Local de Retirada">
+      <input type="text" id="localEntrega" placeholder="🚚 Local de Entrega">
+      <div class="nav-buttons">
+        <button onclick="irPara('tela1')">⬅ Voltar</button>
+        <button onclick="cadastrarDoacao(); irPara('tela3')">✅ Finalizar Cadastro</button>
+      </div>
+    </div>
+
+    <!-- Tela 3: Revisar Doações Cadastradas -->
+    <div id="tela3" class="tela hidden">
+      <h1>✅ Doações Cadastradas</h1>
+      <ul id="listaDoacoes"></ul>
+      <div class="nav-buttons">
+        <button onclick="irPara('tela2')">⬅ Nova Doação</button>
+        <button onclick="irPara('tela4')">➡ Solicitar</button>
+      </div>
+    </div>
+
+    <!-- Tela 4: Solicitar Doações -->
+    <div id="tela4" class="tela hidden">
+      <h1>📦 Solicitar Doações</h1>
+      <ul id="listaDisponiveis"></ul>
+      <input type="number" id="numeroDoacao" placeholder="Digite o número da doação">
+      <button onclick="solicitarDoacao()">📥 Solicitar</button>
+      <div id="mensagem"></div>
+      <div class="nav-buttons">
+        <button onclick="irPara('tela3')">⬅ Voltar</button>
+        <button onclick="irPara('tela5')">➡ Resumo</button>
+      </div>
+    </div>
+
+    <!-- Tela 5: Resumo Final -->
+    <div id="tela5" class="tela hidden">
+      <h1>🎯 Resumo Final</h1>
+      <ul id="listaResumo"></ul>
+      <div class="nav-buttons">
+        <button onclick="irPara('tela4')">⬅ Voltar</button>
+        <button onclick="irPara('tela1')">🏠 Início</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+  <!-- Script para gerar o QR Code -->
+  <script>
+    var appUrl = "https://seudominio.com/conectgv";
+    new QRCode(document.getElementById("qrcode"), {
+      text: appUrl,
+      width: 150,
+      height: 150
+    });
+  </script>
+</body>
+</html>
