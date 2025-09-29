@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ConectGv - Doação de Alimentos</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Biblioteca para gerar QRCode -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
 </head>
 <body>
   <div class="container">
@@ -21,14 +19,11 @@
       </div>
     </div>
 
-    <!-- Tela 6: Informações e QR Code -->
+    <!-- Tela 6: Informações (sem QR Code) -->
     <div id="tela6" class="tela hidden">
       <h1>ℹ Sobre o Aplicativo</h1>
       <p>Compartilhe alimentos e ajude quem precisa!</p>
-
-      <h3>📲 QR Code do Aplicativo</h3>
-      <div id="qrcode"></div>
-      <p>Escaneie o QR Code com seu celular para acessar o aplicativo.</p>
+      <p>Este aplicativo foi desenvolvido para facilitar a doação e solicitação de alimentos.</p>
 
       <div class="nav-buttons">
         <button onclick="irPara('tela1')">⬅ Voltar</button>
@@ -86,16 +81,6 @@
 
   </div>
 
-  <script src="script.js"></script>
-
-  <!-- Script para gerar o QR Code -->
-  <script>
-    var appUrl = "https://seudominio.com/conectgv";
-    new QRCode(document.getElementById("qrcode"), {
-      text: appUrl,
-      width: 150,
-      height: 150
-    });
-  </script>
+  <script src="{{url_for('static', filename='js/script.js')}}"></script>
 </body>
 </html>
